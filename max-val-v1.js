@@ -46,5 +46,5 @@ let arr = [42, 28, 4, 9, 38, 100, 50, 40, 8, 99];
 console.log(max(arr));
 
 // COMPLEXITY
-// WorstCase:       O(n^2) Polynomial/Quadratic Time with nested loops
+// WorstCase:       O(n^2) Polynomial/Quadratic Time due to nested loops
 // BestCase:        O(n) Linear Time if first item in array isMax
