@@ -20,12 +20,6 @@ function max(array) {
                    maximum */
                 isMax = false;
                 console.log('item_B: ', itemB, ' isMax: ', isMax);
-
-                // v1.2 REFACTOR
-                // adding simple `break` won't decrease time complexity
-                // but will bring the running time coefficient down (quite) a bit
-                console.log('BREAK! no need to proceed with this iteration')
-                break;
             }
             console.log('Item_B: ', itemB, ' isMax: ', isMax);
         }
@@ -42,9 +36,9 @@ function max(array) {
     }
 }
 
-let arr = [42, 28, 4, 9, 38, 100, 50, 40, 8, 99];
+let arr = [101, 42, 28, 4, 9, 38, 100, 50, 40, 8, 99];
 console.log(max(arr));
 
-// COMPLEXITY
+// TIME COMPLEXITY
 // WorstCase:       O(n^2) Polynomial/Quadratic Time with nested loops
 // BestCase:        O(n) Linear Time if first item in array isMax
