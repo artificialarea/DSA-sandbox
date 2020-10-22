@@ -3,7 +3,8 @@
 // Task: Finding the maximum value in an array
 
 /* v1: naive solution
-// The simple solution would be to compare every value in the array with every other value.
+// A simple solution would be... 
+// to compare every value in the array with every other value.
 // The value which is not less than any of the other values will be the maximum.
 */
 
