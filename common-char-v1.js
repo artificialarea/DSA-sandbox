@@ -37,8 +37,21 @@ function mostCommonChar(str) {
             console.log('mostCommonChar: ', mostCommonCharacter, maxOccurrences);
         }
     }
-    return mostCommonCharacter;
+    return `The most common character is '${mostCommonCharacter}', which appears ${maxOccurrences} times.`;
 }
 
 let str = 'Hello Wonders of the World!';
 console.log(mostCommonChar(str));
+
+
+// TIME COMPLEXITY  
+// although there are two nested loops, 
+// the first loop condition is fixed to 26, 
+// so it's a constant not a k for O(n^k) polynomial
+
+// WorstCase:       O(n) Linear Time
+// BestCase:        O(n) Linear Time 
+
+// with a pretty high running time coefficient because we loop throught the entire array 1 time for each letter
+
+// If our strings are unlikely to contain every letter then there is likely to be an optimization by initially making a set of the letters in the sentence, then searching through each of them, trading off time complexity for the additional memory used to store the set of letters.
