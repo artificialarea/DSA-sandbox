@@ -1,5 +1,5 @@
 /*
-PRACTICE QUESTION 1:
+PRACTICE TASE 1:
 Given a document, implement an algorithm to count the number of word occurrences.
 
 Input: `"Hello there, how are you? Can you tell me how to get to the nearest Starbucks?"`
@@ -35,7 +35,7 @@ function wordCounter(string) {
     // identify and count instances of words
     for (let i = 0; i < strArr.length; i++) {
         let word = strArr[i];
-        if (!wordCount[word]) {
+        if (!(word in wordCount)) { // same same: if (!wordCount[word])
             wordCount[word] = 1;
         } else {
             wordCount[word]++;
