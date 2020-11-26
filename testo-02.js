@@ -47,7 +47,7 @@ class LinkedList {
         }
     }
 
-    // Extra Insertions ///////////////////
+    // TESTO-02 Extra Insertions ///////////////////
 
     insertBefore(value, item) {
         if (!this.head) return null;
@@ -186,7 +186,8 @@ class LinkedList {
 }
 
 
-// Note: these are free functions instead of methods of the linked list class, so implement them outside the linked list class.
+// SUPPLEMENTAL FUNCTIONS FOR A LINKED LIST ////////////////////
+// Note: these are free functions instead of methods of the linked list class, so implement them *outside* the linked list class. (This appears to be a matter of preference, tho)
 const linkedListHelper = {
     display: function(list) {
         if (!list.head) {
@@ -210,6 +211,16 @@ const linkedListHelper = {
         }
         console.log('//////// \n' + listStr.join(' '));
 
+    },
+    size: function(list) {
+        let counter = 0;
+        let currNode = list.head;
+        while (currNode) {
+            counter++;
+            currNode = currNode.next;
+        }
+        console.log('list size: ', counter);
+        return counter;
     }
 }
 
@@ -235,16 +246,20 @@ SLL.insertLast('Starbuck');
 SLL.insertLast('Tauhida');
 
 linkedListHelper.display(SLL);
+linkedListHelper.size(SLL);
 
 SLL.remove('Husker');
 
 linkedListHelper.display(SLL);
+linkedListHelper.size(SLL);
 
 SLL.insertBefore('Boomer', 'Athena');
 SLL.insertAfter('Helo', 'Hotdog');
 
 linkedListHelper.display(SLL);
+linkedListHelper.size(SLL);
 
 SLL.insertAt(2, 'Kat');
 
 linkedListHelper.display(SLL);
+linkedListHelper.size(SLL);

@@ -117,7 +117,8 @@ class LinkedList {
 }
 
 
-// Note: these are free functions instead of methods of the linked list class, so implement them outside the linked list class.
+// SUPPLEMENTAL FUNCTIONS FOR A LINKED LIST ////////////////////
+// Note: these are free functions instead of methods of the linked list class, so implement them *outside* the linked list class. (This appears to be a matter of preference, tho)
 const linkedListHelper = {
     display: function(list) {
         if (!list.head) {
@@ -141,7 +142,8 @@ const linkedListHelper = {
         }
         console.log('//////// \n' + listStr.join(' '));
 
-    }
+    },
+    
 }
 
 
