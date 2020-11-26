@@ -2,6 +2,13 @@
 
 misc shizz to prep for mock interview...
 
+<br />
+
+## 00.
+**General linked list practice.**
+> see any of the `testos`, like **[`testo-02.js`](https://github.com/artificialarea/DSA-sandbox/blob/main/testo-02.js)**
+
+
 
 <br />
 

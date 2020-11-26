@@ -19,9 +19,9 @@ class LinkedList {
 
 
     // ASIDE: PARAM SEMANTICS /////////////////////////
-    // thinkful uses param name 'item' (paired with 'value' when two)
-    // marius uses param name 'value' (paired with 'newValue' when two)
-    // juan uses param name 'data' (paired with '??')
+    // thinkful uses param name 'item' (paired with 'value' when comparing two)
+    // marius uses param name 'value' (paired with 'newValue')
+    // juan uses param name 'data' (paired with 'value')
 
 
     // INSERTION /////////////////////////////////////////////
@@ -30,30 +30,30 @@ class LinkedList {
     // insert at the end of the list (insertLast).
     // insert anywhere else, between 2 nodes (insert, insertAt).
 
-    insertFirst(item) {
-        this.head = new _Node(item, this.head);
+    insertFirst(data) {
+        this.head = new _Node(data, this.head);
     }
 
-    insertLast(item) {
+    insertLast(data) {
         if (this.head === null) {
-            this.insertFirst(item);
+            this.insertFirst(data);
         }
         else {
             let currNode = this.head;
             while (currNode.next !== null) {
                 currNode = currNode.next;
             }
-            currNode.next = new _Node(item, null);
+            currNode.next = new _Node(data, null);
         }
     }
 
     // TESTO-02 Extra Insertions ///////////////////
 
-    insertBefore(value, item) {
+    insertBefore(value, data) {
         if (!this.head) return null;
-        // if lookup value is the first item in the list
+        // if lookup value is the first data in the list
         if (this.head.value === value) {
-            this.insertFirst(item);
+            this.insertFirst(data);
             return;
         }
 
@@ -71,12 +71,12 @@ class LinkedList {
             currNode = currNode.next;
         }
         // Found node with the value
-        // Insert new node item before current node, connecting it to next pointer
+        // Insert new node data before current node, connecting it to next pointer
         // and then rewire previous node next pointer to point at the nexw node
-        prevNode.next = new _Node(item, currNode);
+        prevNode.next = new _Node(data, currNode);
     }
 
-    insertAfter(value, item) {
+    insertAfter(value, data) {
         if (!this.head) return null;
 
         let currNode = this.head;
@@ -91,12 +91,12 @@ class LinkedList {
         }
         // the current node points to new node
         // while the new node points the next node
-        currNode.next = new _Node(item, currNode.next);
+        currNode.next = new _Node(data, currNode.next);
     }
 
-    insertAt(index, item) {
+    insertAt(index, data) {
         if (index === 0) {
-            return this.head = new _Node(item, this.head);
+            return this.head = new _Node(data, this.head);
         }
 
         // need to create a counter because
@@ -111,24 +111,24 @@ class LinkedList {
             currNode = currNode.next;
             counter++;
         }
-        prevNode.next = new _Node(item, currNode);
+        prevNode.next = new _Node(data, currNode);
     }
 
 
     
     // RETREVIAL /////////////////////////////////////////////
 
-    find(item) {
+    find(data) {
         // if the list is empty
         if (!this.head) {
             return null;
         }
         // start at the head
         let currNode = this.head;
-        // check for the item
-        while (currNode.value !== item) {
+        // check for the data
+        while (currNode.value !== data) {
             /* Retrun null if it's the end of the list
-               and the item is not on the list */
+               and the data is not on the list */
             if (currNode.next === null) {
                 return null;
             }
@@ -148,7 +148,7 @@ class LinkedList {
     // delete from the end of the list
     // delete a node between two other nodes.
 
-    remove(item) {
+    remove(data) {
         // If list is empty
         if (!this.head) {
             return null;
@@ -156,7 +156,7 @@ class LinkedList {
         // If the node to be removed is the initial head,
         // make the next node the head
         // removing the current node
-        if (this.head.value === item) {
+        if (this.head.value === data) {
             this.head = this.head.next;
             return;
         }
@@ -166,16 +166,16 @@ class LinkedList {
         // Keep track of the previous node
         let prevNode = this.head;
 
-        while ((currNode !== null) && (currNode.value !== item)) {
+        while ((currNode !== null) && (currNode.value !== data)) {
             // save the previous node, before move on to next node
             prevNode = currNode;
             currNode = currNode.next;
         }
         if (currNode === null) {
-            console.log('Item not found');
+            console.log('data not found');
             return;
         }
-        // Found the item to remove (currNode)!!
+        // Found the data to remove (currNode)!!
         // So to actually remove it (not delete it, per se),
         // set the previous node next pointer to point to the node after the current node
         // removing the current node because nothing is pointing to it
