@@ -3,10 +3,10 @@
 PRACTICE TASK 02:
 Given a sorted linked list, write an algorithm to delete all duplicate numbers from the sorted linked list.
 
-///////////////////////////////////
-
-Question: Presumably for this exercise I'm just treating an array as a linked list and not using indexing? Or do I need to create a LinkedList class first and then create a helper to remove dupliates?
-
-
-
 */
+
+const { LinkedList } = require('./linked-list');
+
+const list = new LinkedList;
+
+addItems = [6, 9, 8, 9, 5, 4, 3, 9, 5, 10]; // dupes: 9 (3)

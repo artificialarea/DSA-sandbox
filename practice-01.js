@@ -1,5 +1,5 @@
 /*
-PRACTICE TASE 1:
+PRACTICE TASK 1:
 Given a document, implement an algorithm to count the number of word occurrences.
 
 Input: `"Hello there, how are you? Can you tell me how to get to the nearest Starbucks?"`
