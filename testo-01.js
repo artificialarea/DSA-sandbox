@@ -126,18 +126,18 @@ const linkedListHelper = {
         let currNode = list.head;
 
         // Display v1: to display list vertically
-        while (currNode) {
-            console.log(currNode.value);
-            currNode = currNode.next;
-        }
+        // while (currNode) {
+        //     console.log(currNode.value);
+        //     currNode = currNode.next;
+        // }
 
         // Display v2: to display list horizonally inline
-        // let listStr = [currNode.value]; 
-        // while (currNode.next !== null) {
-        //     currNode = currNode.next;
-        //     listStr.push(currNode.value);
-        // }
-        // console.log(listStr.join(' '));
+        let listStr = [currNode.value]; 
+        while (currNode.next !== null) {
+            currNode = currNode.next;
+            listStr.push(currNode.value);
+        }
+        console.log('//////// \n' + listStr.join(' '));
 
     }
 }
@@ -161,6 +161,10 @@ SLL.insertLast('Boomer');
 SLL.insertLast('Helo');
 SLL.insertLast('Husker');
 SLL.insertLast('Starbuck');
+SLL.insertLast('Tauhida');
 
 linkedListHelper.display(SLL);
 
+SLL.remove('Husker');
+
+linkedListHelper.display(SLL);
