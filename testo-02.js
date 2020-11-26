@@ -1,6 +1,7 @@
 // Nov 25
-// doing the walk thru with the lesson again
-// src: https://courses.thinkful.com/dsa-v1/checkpoint/5#operations-in-a-linked-list
+// building upon the walk-thru (testo-01.js)
+// now redoing the assignment (adding additonal methods and helpers)
+// src: https://courses.thinkful.com/dsa-v1/checkpoint/5#assignment
 
 // The primary operations in a linked list are insert, remove, and retrieval (find).
 
@@ -45,6 +46,74 @@ class LinkedList {
             currNode.next = new _Node(item, null);
         }
     }
+
+    // Extra Insertions ///////////////////
+
+    insertBefore(value, item) {
+        if (!this.head) return null;
+        // if lookup value is the first item in the list
+        if (this.head.value === value) {
+            this.insertFirst(item);
+            return;
+        }
+
+        // Start at the head
+        let currNode = this.head;
+        let prevNode = this.head;
+
+        while (currNode.value !== value) {
+            if (!currNode.next) {
+                // it ain't in the list
+                return null;
+            }
+            // keep traversing through the list
+            prevNode = currNode;
+            currNode = currNode.next;
+        }
+        // Found node with the value
+        // Insert new node item before current node, connecting it to next pointer
+        // and then rewire previous node next pointer to point at the nexw node
+        prevNode.next = new _Node(item, currNode);
+    }
+
+    insertAfter(value, item) {
+        if (!this.head) return null;
+
+        let currNode = this.head;
+
+        // traversing the list
+        while (currNode.value !== value) {
+            if (!currNode.next) {
+                return null;
+            }
+            // keep traversing
+            currNode = currNode.next;
+        }
+        // the current node points to new node
+        // while the new node points the next node
+        currNode.next = new _Node(item, currNode.next);
+    }
+
+    insertAt(index, item) {
+        if (index === 0) {
+            return this.head = new _Node(item, this.head);
+        }
+
+        // need to create a counter because
+        // linked lists don't have index numbers like an array
+        let counter = 1;
+
+        let currNode = this.head.next; // WHY NOT this.head ????
+        let prevNode = this.head;
+
+        while (counter !== index) {
+            prevNode = currNode;
+            currNode = currNode.next;
+            counter++;
+        }
+        prevNode.next = new _Node(item, currNode);
+    }
+
 
     
     // RETREVIAL /////////////////////////////////////////////
@@ -168,5 +237,14 @@ SLL.insertLast('Tauhida');
 linkedListHelper.display(SLL);
 
 SLL.remove('Husker');
+
+linkedListHelper.display(SLL);
+
+SLL.insertBefore('Boomer', 'Athena');
+SLL.insertAfter('Helo', 'Hotdog');
+
+linkedListHelper.display(SLL);
+
+SLL.insertAt(2, 'Kat');
 
 linkedListHelper.display(SLL);
