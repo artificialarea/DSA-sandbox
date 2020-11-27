@@ -1,5 +1,5 @@
-// Nov 26
-// building upon testo-02.js
+// Contains: 
+// editted version of `testo-03-1.js`
 
 // The primary operations in a linked list are insert, remove, and retrieval (find).
 
@@ -14,7 +14,6 @@ class LinkedList {
     constructor() {
         this.head = null;
     }
-
 
     // ASIDE: PARAM SEMANTICS /////////////////////////
     // thinkful uses param name 'item' (paired with 'value' when comparing two)
@@ -194,8 +193,14 @@ class LinkedList {
 // create a new instance of a singly linked list object
 let SLL = new LinkedList();
 
-// let initList = [1, 2, 2, 2, 3, 5, 5, 5, 5, 7, 8, 9, 12, 12, 15];
-let initList = [];
+// SORTED LIST
+// let initList = [1, 2, 2, 2, 3, 5, 5, 5, 5, 7, 8, 9, 12, 12, 15, 31];
+// UNSORTED LIST
+let initList = [11, 12, 1, 2, 15, 2, 1, 3, 5, 31, 31, 31, 31, 5, 5, 5, 5, 5, 5, 7, 9, 8, 9, 12, 12, 15];
+
+// PRE-SORT 
+// otherwise `linkedListHelper.removeDupes(list)` fails if unsorted list
+initList.sort((a, b) => a - b);
 
 // populate linked list
 initList.forEach(item => {
@@ -208,43 +213,22 @@ initList.forEach(item => {
 // 2. display output in console.log, if time allows
 
 const linkedListHelper = {
-    removeDupesThinkful: function(list) {
-        let current = list.head;
+    removeDupes: function(list) {
+        let currNode = list.head;
 
-        while (current !== null) {
-            let newNode = current;
-            
-            while (newNode.next !== null) {
-                if (newNode.next.value === current.value) {
-                    newNode.next = newNode.next.next;
+        while (currNode) {
+            while (currNode.next) {
+                if (currNode.next.value === currNode.value) {
+                    currNode.next = currNode.next.next;
                 }
                 else {
-                    newNode = newNode.next;
+                    currNode = currNode.next;
                 }
             }
-            current = current.next;
-        }
-    },
-    removeDupesNathaniel: function(list) {
-        let currNode = list.head;
-        while (currNode.next !== null) {
-            while (currNode.value === currNode.next.value) {
-                currNode.next = currNode.next.next;
-            }
             currNode = currNode.next;
         }
     },
-    removeDupes: function(list) {
-        if (!list.head) return null;
-        
-        let currNode = list.head;
-        while (currNode.next) {
-            while (currNode.value === currNode.next.value) {
-                currNode.next = currNode.next.next;
-            }
-            currNode = currNode.next;
-        }
-    },
+    // if time allows
     display: function(list) {
         if (!list.head) {
             console.log('Empty list');
@@ -265,8 +249,8 @@ const linkedListHelper = {
             currNode = currNode.next;
             listStr.push(currNode.value);
         }
-        console.log('//////// \n' + listStr.join(' '));
-
+        // console.log('//////// \n' + listStr.join(' '));
+        console.log(listStr.join(' '));
     },
 };
 
@@ -274,8 +258,36 @@ const linkedListHelper = {
 // console.log(JSON.stringify(SLL, null, 4));
 
 linkedListHelper.display(SLL);
-
-// linkedListHelper.removeDupesNathaniel(SLL);
-// linkedListHelper.removeDupesThinkful(SLL);
+console.log('removeDupes:');
 linkedListHelper.removeDupes(SLL);
 linkedListHelper.display(SLL);
+
+// This common solution above ^^^^^^^^^ 
+// has a runtime of O(n^2) Quadratic Time Complexity
+// but it fails to execute properly if the list is unsorted.
+
+// HASH TABLE VERSION /////////////////////////////////////////////
+
+// Big O Improvement via solution below: 
+// iterate through the list via a Hash Table
+// this works fine with unsorted lists, too
+// AND runtime is better -- O(n) Linear Time Complexity
+
+const HashMap = require ('./hashmap');
+
+function removeDuplicatesViaHashbrown(list) {
+    const lib = new HashMap;
+
+    let result = [];
+
+    for (const element of list) {
+        if (!lib.get(element)) { // if the element is not in the libary
+            result.push(element);
+            lib.set(element, true);
+        }
+    }
+    console.log('HashTable:\n' + result.join(' '))
+    return result;
+}
+
+removeDuplicatesViaHashbrown(initList);
