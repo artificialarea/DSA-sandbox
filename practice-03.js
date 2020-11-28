@@ -58,7 +58,6 @@ class LinkedList {
 
     }
 
-
     // remove //////////////////
 
     remove(data) {

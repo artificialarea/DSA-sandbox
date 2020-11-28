@@ -8,7 +8,7 @@ class _Node {
 }
 
 // Create a Linked List class
-// with some common crud methods for insertion, retrieval, and deletion
+// with some common crud methods for insertion, retrieval, update, and deletion
 class LinkedList {
     constructor() {
         this.head = null;
@@ -25,7 +25,7 @@ class LinkedList {
         }
 
         let currNode = this.head;
-        
+
         while (currNode.next) {
             // continue traversing through LL
             currNode = currNode.next;
@@ -35,13 +35,14 @@ class LinkedList {
     }
 
     // retrieval //////////////
+
     find(data) {
         if (!this.head) return null;
 
         let currNode = this.head;
 
         while (currNode.value !== data) {
-            if(currNode.next === null) {
+            if (currNode.next === null) {
                 return null;
             }
             else {
@@ -53,8 +54,22 @@ class LinkedList {
         return currNode;
     }
 
+    // update ////////////////
+
+    update(data, newData) {
+        if(!this.head) return null;
+
+        let currNode = this.head;
+
+        while (currNode && currNode.value !== data) {
+            currNode = currNode.next;
+        }
+        currNode.value = newData;
+    }
+
     // deletion //////////////
-    remove(data){
+
+    remove(data) {
         if (!this.head) return null;
 
         // if node to be removed is in the initial node/head
@@ -67,7 +82,7 @@ class LinkedList {
         let currNode = this.head;
         let prevNode = this.head;
 
-        while(currNode.value !== data) {
+        while (currNode.value !== data) {
             if (currNode !== null) {
                 prevNode = currNode;
                 currNode = currNode.next;
@@ -89,8 +104,8 @@ class LinkedList {
 // helper functions
 const linkedListHelper = {
 
-    display: function(list) {
-        if(!list.head) return null;
+    display: function (list) {
+        if (!list.head) return null;
 
         let currNode = list.head;
         // while (currNode) {
@@ -105,8 +120,18 @@ const linkedListHelper = {
         console.log('/////////// \n' + listStr.join(' '));
     },
 
-    removeDupes: function(list) {
+    removeDupes: function (list) {
         let currNode = list.head;
+
+        // O(n) Linear Time Complexity
+        while (currNode.next) {
+            if (currNode.value === currNode.next.value) {
+                currNode.next = currNode.next.next;
+            }
+            else {
+                currNode = currNode.next;
+            }
+        }
 
         // O(n^2) Polynomial Time Complexity
         // while (currNode) {
@@ -121,16 +146,6 @@ const linkedListHelper = {
         //     currNode = currNode.next;
         // }
 
-        // O(n) Linear Time Complexity
-        while (currNode.next) {
-            if (currNode.value === currNode.next.value) {
-                currNode.next = currNode.next.next;
-            }
-            else {
-                currNode = currNode.next;
-            }
-        }
-
         // BUT doesn't work properly if list is unsorted.
         // Solution for that scenario ==> create a Hash Table.
         // Would have a runtime of O(n), assuming has table insertion is O(1) due to no collisions.
@@ -141,7 +156,7 @@ const linkedListHelper = {
 // TEST DATA
 let SLL = new LinkedList();
 
-const testData = [1, 2, 3, 2, 2, 4, 5, 5 ];
+const testData = [1, 2, 3, 2, 2, 4, 5, 5];
 
 testData.forEach(item => {
     SLL.insertLast(item);
@@ -149,4 +164,6 @@ testData.forEach(item => {
 
 linkedListHelper.display(SLL);
 linkedListHelper.removeDupes(SLL);
+linkedListHelper.display(SLL);
+SLL.update(1, 666);
 linkedListHelper.display(SLL);
