@@ -23,15 +23,16 @@ class LinkedList {
         if (!this.head) {
             this.insertFirst(data);
         }
-
-        let currNode = this.head;
-
-        while (currNode.next) {
-            // continue traversing through LL
-            currNode = currNode.next;
+        else {
+            let currNode = this.head;
+            
+            while (currNode.next) {
+                // continue traversing through LL
+                currNode = currNode.next;
+            }
+            // else, insert data at the end of LL
+            currNode.next = new _Node(data, null);
         }
-        // else, insert data at the end of LL
-        currNode.next = new _Node(data, null);
     }
 
     // retrieval //////////////
