@@ -138,23 +138,23 @@ module.exports = HashMap;
 // console.log(removeDuplicates('google all that you can'));
 
 
-// // as Hash Table
-// function removeDuplicatesViaHashbrown(list) {
-//     const lib = new HashMap;
+// as Hash Table
+function removeDuplicatesViaHashbrown(list) {
+    const lib = new HashMap;
 
-//     let result = [];
+    let result = [];
 
-//     for (const element of list) {
-//         if (!lib.get(element)) { // if the element is not in the libary
-//             result.push(element);
-//             lib.set(element, true);
-//         }
-//     }
-//     console.log(result.join(' '))
-//     return result;
-// }
+    for (const element of list) {
+        if (!lib.get(element)) { // if the element is not in the libary
+            result.push(element);
+            lib.set(element, true);
+        }
+    }
+    console.log(result.join(' '))
+    return result;
+}
 
-// let initList = [11, 12, 1, 2, 15, 2, 1, 3, 5, 31, 31, 31, 31, 5, 5, 5, 5, 5, 5, 7, 9, 8, 9, 12, 12, 15];
+let initList = [11, 12, 1, 2, 15, 2, 1, 3, 5, 31, 31, 31, 31, 5, 5, 5, 5, 5, 5, 7, 9, 8, 9, 12, 12, 15];
 
-// console.log(initList.join(' '));
-// removeDuplicatesViaHashbrown(initList);
+console.log(initList.join(' '));
+removeDuplicatesViaHashbrown(initList);

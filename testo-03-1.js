@@ -371,7 +371,9 @@ function removeDuplicatesViaHashbrown(list) {
 
 // removeDuplicatesViaHashbrown(initList);
 
-
+// ALSO SEE
+// NICHOLAS HAZEL (SINSYS) SOLUTION FOR SORTING LINKED LIST
+// via web-developers-toolkit-mariusbanea/data-structures-linked-lists/sorting-list.js
 
 
 // MISC
