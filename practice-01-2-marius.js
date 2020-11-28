@@ -16,6 +16,16 @@ function wordCounter(str) {
     // object containing each unique word encountered and the number of instances it appears within the string
     const words = {};
 
+    str = str.toLowerCase();
+
+    // Parse all non-alphabetic characters from string 
+    // (maintaining spaces between words for string split)
+    for (let i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) !== 32 && (str.charCodeAt(i) < 97 || str.charCodeAt(i) > 122)) {
+            str = str.slice(0, i) + str.slice(i+1);
+        }
+    }
+
     str.split(' ').forEach(item => {
         words[item] = words[item] + 1 || 1;
     });
